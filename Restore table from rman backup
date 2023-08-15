@@ -1,0 +1,9 @@
+rman target sys/****@dbname log /tmp/recover_tablefimdim1208.log      
+run {
+RECOVER TABLE DMRL."FIMDIM" OF PLUGGABLE DATABASE DEVTESTDB
+UNTIL SEQUENCE 42032 thread 1
+AUXILIARY DESTINATION '/data/orabackup/clonefimdim/'
+datapump destination '/data/orabackup/clonefimdim/dpump/'
+dump file 'exportFimdim1108.dmp'
+notableimport;
+}
